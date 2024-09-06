@@ -5,7 +5,7 @@ import numpy as np
 
 
 class PygameRender:
-    def __init__(self, Width, Height, BoidCount, Resolution, MaxFramerate):
+    def __init__(self, Width, Height, BoidCount, Resolution, MaxFramerate, AwarenessRadius):
         self.Width = Width
         self.Height = Height
         self.screen = pygame.display.set_mode((Width, Height), pygame.RESIZABLE)
@@ -16,6 +16,7 @@ class PygameRender:
         self.PositionArray = np.zeros((BoidCount, 3))
         self.Resolution = Resolution
         self.MaxFramerate = MaxFramerate
+        self.AwarenessRadius = AwarenessRadius
         self.MouseX = 0
         self.MouseY = 0
         self.Running = True
@@ -37,6 +38,16 @@ class PygameRender:
             fps = int(10/dt)/10
             self.font.render_to(self.screen,(20,20),f"fps: {fps}",(255,255,255))
             
+    def RenderBins(self):
+        Resolution = self.Resolution
+        AwarenessRadius = self.AwarenessRadius 
+        PartitionCount = int(Resolution / AwarenessRadius)
+        
+        for i in range(PartitionCount):
+            pygame.draw.line(self.screen,(50,50,50),(i*AwarenessRadius,0),(i*AwarenessRadius, Resolution))
+        for i in range(PartitionCount):
+            pygame.draw.line(self.screen,(50,50,50),(0,i*AwarenessRadius),(Resolution,i*AwarenessRadius))
+    
     def UpdateInputs(self):
         MouseX, MouseY = pygame.mouse.get_pos()
         self.MouseX = MouseX
@@ -50,6 +61,7 @@ class PygameRender:
         self.UpdateInputs()
         self.RenderBoids()
         self.RenderFPS()
+        self.RenderBins()
         pygame.display.update() 
         
         

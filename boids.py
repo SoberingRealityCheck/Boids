@@ -15,7 +15,7 @@ class BoidsProgram:
                 MouseFollowStrength,
                 ):
         self.BoidSimulation = simulate.Simulation(BoidCount, SimResolution, SimSpeed, Speed, Reactivity, AwarenessRadius, MouseFollowStrength)
-        self.BoidRender = render.PygameRender(Width, Height, BoidCount, SimResolution, MaxFramerate)
+        self.BoidRender = render.PygameRender(Width, Height, BoidCount, SimResolution, MaxFramerate, AwarenessRadius)
         self.Width = Width
         self.Height = Height
         self.SimResolution = SimResolution
@@ -38,11 +38,11 @@ if __name__ == "__main__":
     TestSim = BoidsProgram(
         Width = 1000, 
         Height = 800, 
-        BoidCount = 1000, 
+        BoidCount = 10, 
         SimResolution = 201, 
         SimSpeed = .5,
         MaxFramerate = 120,
-        Speed = 5,
+        Speed = 3,
         Reactivity = .01,
         AwarenessRadius = 10,
         MouseFollowStrength = .1,

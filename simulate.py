@@ -26,6 +26,7 @@ class Simulation:
         self.Reactivity = Reactivity
         self.AwarenessRadius = AwarenessRadius
         self.BinBin = bins.BinBin(Resolution, AwarenessRadius, self.PositionArray)
+        
 
     def UpdatePositions(self):
         OldPositionArray = self.PositionArray
