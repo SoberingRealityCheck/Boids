@@ -46,4 +46,13 @@ class BinBin:
             #if this plan doesn't work, a solid workable middle ground would probably be only binning once every four frames
             #although with the current setup, doing that might create pretty annoying stutter on those frames
             #MatchingBinId = BoidYNumber
+            
+            #structure of this approach:
+                #initially define bin ranges
+                #sort boids into bins (by putting their pos index in a new 'bins' list?)
+                #each step of the simulation: 
+                    #check if boids have exited the range of their specific bin
+                        #if so, check & reassign boid to new bin
+                    #return boids their bin + neighbor bins as "neighbors" array for movement logic calculations
+                
 

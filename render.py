@@ -42,11 +42,12 @@ class PygameRender:
         Resolution = self.Resolution
         AwarenessRadius = self.AwarenessRadius 
         PartitionCount = int(Resolution / AwarenessRadius)
-        
+        ScaledRadiusX = AwarenessRadius * self.Width / Resolution
+        ScaledRadiusY = AwarenessRadius * self.Height / Resolution
         for i in range(PartitionCount):
-            pygame.draw.line(self.screen,(50,50,50),(i*AwarenessRadius,0),(i*AwarenessRadius, Resolution))
+            pygame.draw.line(self.screen,(50,50,50),(i*ScaledRadiusX,0),(i*ScaledRadiusX, self.Height))
         for i in range(PartitionCount):
-            pygame.draw.line(self.screen,(50,50,50),(0,i*AwarenessRadius),(Resolution,i*AwarenessRadius))
+            pygame.draw.line(self.screen,(50,50,50),(0,i*ScaledRadiusY),(self.Width,i*ScaledRadiusY))
     
     def UpdateInputs(self):
         MouseX, MouseY = pygame.mouse.get_pos()

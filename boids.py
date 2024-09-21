@@ -2,6 +2,9 @@ import simulate, render
 
 
 class BoidsProgram:
+    '''
+    Main Boids Program - calls the simulation and rendering functions + contains params that affect the simulation
+    '''
     def __init__(self, 
                 Width, 
                 Height, 
@@ -38,11 +41,11 @@ if __name__ == "__main__":
     TestSim = BoidsProgram(
         Width = 1000, 
         Height = 800, 
-        BoidCount = 10, 
+        BoidCount = 100, 
         SimResolution = 201, 
         SimSpeed = .5,
         MaxFramerate = 120,
-        Speed = 3,
+        Speed = 12,
         Reactivity = .01,
         AwarenessRadius = 10,
         MouseFollowStrength = .1,
